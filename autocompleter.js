@@ -1,8 +1,7 @@
 $(document).ready(function () {
 	var string = '';
-	document.getElementById('search').onkeypress = function(event){
+	this.getElementById('search').onkeypress = function(event){
 		var value = String.fromCharCode(event.keyCode);
-		console.log(string)
 		string = string + value;
 		var text = new Array();
 		$.getJSON(' https://guidebook.com/om/service/v2/search/?q=' + string, function(data) {
@@ -10,9 +9,8 @@ $(document).ready(function () {
 			element = document.getElementById("search-results");
 			var inputString = "";
 			for (i = 0; i < text.length; i++) {
-   				inputString = inputString + text[i]['name'] + "<br />";
+   				inputString = inputString + "<li>" + text[i]['name'] + "</li>";
 			}
-			console.log("input" + inputString)
 			element.innerHTML = inputString;
 		})
 	}
